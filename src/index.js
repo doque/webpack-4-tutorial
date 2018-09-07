@@ -1,4 +1,6 @@
 import './index.html';
-import { hello } from './hello';
+import React from 'react';
+import { render } from 'react-dom';
+import { Hello } from './Hello';
 
-hello('Donald Trump');
+render(<Hello name="Donald Trump" />, document.getElementById('app'));
