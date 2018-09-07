@@ -4,13 +4,18 @@ export class Hello extends Component {
   constructor() {
     super();
     this.state = {
-      Name: null
+      Name: () => <i>Loading...</i>
     };
   }
 
-  async componentDidMount() {
-    const { Name } = await import('./Name');
-    this.setState({ Name });
+  componentDidMount() {
+    setTimeout(async () => {
+      const {
+        Name
+      } = await import(/* webpackChunkName: "Name", webpackPrefetch: true */
+      './Name');
+      this.setState({ Name });
+    }, 5000);
   }
 
   render() {
