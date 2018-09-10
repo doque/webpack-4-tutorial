@@ -1,6 +1,21 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  output: {
+    filename: '[name]-[contenthash].js'
+  },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {
